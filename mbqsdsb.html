@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>门诊慢性病亲朋代申报演示</title>
+    <style>
+			
+		body {
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #f0f0f0;
+		}
+
+		* {	font-size: 2vh; }
+		
+		.container {
+			position: relative;
+			width: 45vh;
+			height: 100vh;
+			overflow: hidden;
+		}
+
+		.slide, .maskLayer {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			/*background-position: center;*/
+			transition: top 1s ease-in-out, height 1s ease-in-out;
+			diaplay: none;
+		}
+
+		.slide.up1 {
+			top: -15vh;
+			height: 115vh;
+		}
+		
+		.slide.up2 {
+			top: -37vh;
+			height: 137vh;
+		}
+		
+		.slide.up3 {
+			top: -55.8vh;
+			height: 155.8vh;
+		}
+		
+		.maskLayer {
+			display: flex;
+			align-items: flex-end;
+			background-color: #000A;
+		}
+		
+		.popwindow {
+			height: 45vh;
+			width:  100vh;
+			background-size: cover;
+			background-image: url('asset/yibao0008.webp');
+			border-radius: 5vh 5vh 0 0;
+		}
+		
+		.diamond {
+			animation: clipDiamondIn .6s;
+		}
+		@keyframes clipDiamondIn {
+			0%   {
+				clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+			}
+			100% {
+				clip-path: polygon(50% -50%, 150% 50%, 50% 150%, -50% 50%);
+			}    
+		}
+		
+		.star {
+			animation: clipRectSpIn .6s;
+		}
+		@keyframes clipRectSpIn {
+			0%   {
+				clip-path: polygon(50% 20%, 50% 50%, 20% 50%, 50% 50%, 50% 80%, 50% 50%, 80% 50%, 50% 50%);
+			}
+			100% {
+				clip-path: polygon(50% 0%, 0% 0%, 0% 50%, 0% 100%, 50% 100%, 100% 100%, 100% 50%, 100% 0%);
+			}
+		}
+		
+		.fan {
+			animation: clipSectorIn .6s linear;
+		}
+		@keyframes clipSectorIn {
+			0%   {
+				clip-path: polygon(50% 100%, 50% 0%, 0% 0%, 100% 0%, 50% 0%);
+			}
+			50% {
+				clip-path: polygon(50% 100%, 0% 0%, 0% 0%, 100% 0%, 100% 0%);
+			}
+			100% {
+				clip-path: polygon(50% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%);
+			}
+		}
+
+		.control {
+			position: absolute;
+			display: flex;
+            justify-content: center;
+            align-items: center;
+			bottom: 3vh;
+			width:100%;
+			background-color: rgba(0, 0, 0, 0.4);
+			z-index: 3;
+		}
+
+		.button {
+			background-color: #4CAF50CC;
+			border: none;
+			color: white;
+			padding: 2vh 4vh;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			border-radius: 0.6vh;
+			cursor: pointer;
+			margin: 1vh 2vh; 
+		}
+
+		.info,.tip {
+			position: absolute;
+			width: 10vh;
+			background-color: #4CAF50AA;
+			text-align: center;
+			margin: 1vh;
+			padding: 1.6vh;
+			border-radius: 0.5vh;
+			color: white;
+			text-decoration: none;
+			z-index: 3;
+		}
+		
+		.tip {
+			width: auto; 
+			/*border: 0.4vh solid #E00;*/
+			border-radius: 0vh;
+			background-color: #E00D;
+			left: 3vh;
+			z-index: 0;
+		}
+		
+		.tip.right {
+			left: auto;
+			right: 0vh;
+		}
+		
+		.bot, .rightbot, .upbot, .uprightbot{
+			position: absolute;
+			width: 0;
+			height: 0;
+			border-width: 1.8vh 0.6vh; 
+			border-style: solid; 
+			border-color: #E00 transparent transparent; 
+			bottom: -3.2vh;
+			left: 3vh;
+			
+		}
+			
+		.rightbot {
+			border-color: #E00 transparent transparent;
+			left: auto;
+			right: 3vh; 
+		}
+		
+		.upbot, .uprightbot {
+			border-color: transparent transparent #E00 transparent;
+			top: -3.2vh;
+			bottom: auto;
+ 		}
+		
+		.uprightbot {
+			left: auto;
+			right: 3vh; 
+		}
+		
+		.input {
+			/*position: absolute;*/
+			width: auto;
+			
+			margin: 0.5vh;
+			border: 0.5vh;
+			color: black;
+			text-decoration: none;
+			right: 6vh;
+		}
+		
+		.rect {
+			position: absolute;
+			width:  20vh;
+			height: 20vh;
+			
+			border-radius: 0vh;
+			border-width: 0.4vh; 
+			border-style: solid;
+			border-color: red;
+			
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.circleBox, .circlediff {
+			width:  2vh;
+			height: 2vh;
+			background: rgba(255,0,0,0.8);
+			border-radius: 4vh;
+
+		}
+
+		.circlediff  {
+			animation: circleChange 2s 1s ease-out infinite; 
+		}
+
+		@keyframes circleChange{
+			0%{transform: scale(1);opacity: 0.95;}
+			25%{transform: scale(2);opacity: 0.5;}
+			100%{transform: scale(3);opacity: 0.05;}
+		}
+		
+	</style>
+</head>
+<body>
+    <div class="container">
+        <div class="slide">
+			<div class="tip" style="left:3vh; top:10vh;">
+				<span class="upbot" style="left:7vh;"></span>
+				<span>1. 微信或支付宝搜索栏搜索“河南医保”</span>
+			</div>
+			<div class="rect" style="left:9.6vh; top:5.6vh; width:7.8vh; height:2.6vh;"></div>
+			
+			<div class="tip" style="left:3vh; top:10.5vh;">
+				<span class="bot" style="left:20vh;"></span>
+				<span>2. 点击进入“河南医保”小程序</span>
+			</div>
+			<div class="rect" style="left:8vh; top:19vh; width:35vh; height:6vh;">
+				<div class="circleBox">
+					<div class="circlediff"></div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="slide">
+			<div class="tip" style="top:69vh;">
+				<span class="bot" style="left:18vh;"></span>
+				<span>3. 新窗口中向上滑动屏幕，点击“我要办”</span>
+			</div>
+			<div class="rect" style="left:15vh; top:78vh; width:14.5vh; height:16vh;">
+				<div class="circleBox">
+					<div class="circlediff"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="slide">
+			<div class="tip" style="top:109vh;">
+				<span class="bot"></span>
+				<span>4. 新窗口中向上滑动屏幕，点击“门诊慢性病亲属代申报”</span>
+			</div>
+			<div class="rect" style="left:2vh; top:120vh; width:12vh; height:14vh;">
+				<div class="circleBox">
+					<div class="circlediff"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="slide">
+			<div class="tip right" style="top:25vh;">
+				<span class="rightbot"></span>
+				<span>5. 新窗口中输入证件号码</span>
+			</div>
+			<div class="rect" style="left: 24vh; top:33vh; width:19vh; height:4vh;">
+				<span>41xxxxxxxxxxxxxxxx</span>
+			</div>
+			
+			<div class="tip" style="top:30vh;">
+				<span class="bot"></span>
+				<span>6. 点击“查询”</span>
+			</div>
+			<div class="rect" style="left:1vh; top:38vh; width:42.5vh; height:7vh;">
+				<div class="circleBox">
+					<div class="circlediff"></div>
+				</div>
+			</div>
+			
+			<div class="tip right" style="top:36.5vh;">
+				<span class="rightbot" style="right:10vh;"></span>
+				<span>7. 查询成功后，自动获取以下三项</span>
+			</div>
+			
+			<div class="rect" style="left: 24vh; top:44.5vh; width:19.5vh; height:19vh; flex-direction: column; justify-content: space-around; align-items: flex-end;">
+				<span>XXX</span>
+				<span>XXXX医疗保险</span>
+				<span>XXXXXX</span>
+			</div>
+	
+			<div class="tip right" style="top:62vh;">
+				<span class="rightbot"></span>
+				<span>8. 输入并选择弹窗中的申报病种名称</span>
+			</div>
+			<div class="rect" style="left: 24vh; top:70vh; width:19vh; height:4vh; justify-content: flex-end;">
+				<span>XXXX病</span>
+			</div>
+			
+			<div class="tip right" style="top:68.5vh; right:5vh;">
+				<span class="rightbot"></span>
+				<span>9. 输入并选择弹窗中的享受待遇医院</span>
+			</div>
+			<div class="rect" style="left: 24vh; top:76.5vh; width:19vh; height:4vh; justify-content: flex-end;">
+				<span>XXXXX医院</span>
+			</div>
+			
+			<div class="tip right" style="top:74.8vh; right:10vh;">
+				<span class="rightbot"></span>
+				<span>10. 输入病案号</span>
+			</div>
+			<div class="rect" style="left: 24vh; top:82.8vh; width:19vh; height:4vh; justify-content: flex-end;">
+				<span>0xxxxxxx</span>
+			</div>
+			
+			<div class="tip right" style="top:81vh;">
+				<span class="rightbot" style="right:10vh;"></span>
+				<span>11. 向上滑动屏幕，输入移动电话</span>
+			</div>
+			<div class="rect" style="left: 24vh; top:89vh; width:19vh; height:4vh; justify-content: flex-end;">
+				<span>1xxxxxxxxxx</span>
+			</div>
+			
+			<div class="tip" style="top:102.5vh; left:14vh;">
+				<span class="bot" style="left:10vh;"></span>
+				<span>12. 上传材料说明：</span>
+			</div>
+			<div class="tip" style="top:110vh; left:15vh; text-align: left; flex-direction: column;">
+				<span>1）住院患者材料：近三年内的住院病案首页、入院记录、出院记录、手术记录、相关检查报告及化验单；</span>
+				<span>2）门诊患者（限本市）材料：近三年内的门诊病历、相关检查报告及化验单；</span>
+				<span>3）“必传材料”和“其他材料”均不超过10个，总计最多上传20个。</span>
+			</div>
+			
+			<div class="tip" style="top:100vh;">
+				<span class="bot"></span>
+				<span>13. 点击上传材料</span>
+			</div>
+			<div class="rect" style="left: 1.5vh; top:108vh; width:12vh; height:12.6vh;">
+				<div class="circleBox">
+					<div class="circlediff"></div>
+				</div>
+			</div>
+			
+			<div class="tip" style="top:112vh; z-index: 1">
+				<span class="bot"></span>
+				<span>14. 弹出窗口中点击“文件”</span>
+			</div>
+			
+			<div class="maskLayer">
+				<div class="popwindow"> </div>
+				<div class="rect" style="left: 1.5vh; top:120vh; width:12vh; height:12vh;">
+					<div class="circleBox">
+						<div class="circlediff"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="slide">
+			<div class="tip" style="top:25vh;">
+				<span class="bot" style="left:15vh;"></span>
+				<span>15. 新窗口中点击选择一个相关文件上传</span>
+			</div>
+			<div class="rect" style="left: 8vh; top:33vh; width:26vh; height:7vh;">
+				<div class="circleBox">
+					<div class="circlediff"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="slide">
+			<div class="tip" style="top:49.5vh; left:0vh;">
+				<span class="bot" style="left:10vh;"></span>
+				<span>16. 完成材料上传后，点击底部"提交申报"</span>
+			</div>
+			
+			<div class="rect" style="left: 1vh; top:57.5vh; width:42vh; height:8vh;">
+				<div class="circleBox">
+					<div class="circlediff"></div>
+				</div>
+			</div>
+			
+			<div class="tip" style="top:66vh; left:0vh;">
+				<span class="bot" style="left:10vh;"></span>
+				<span>17. 温馨提示：</span>
+			</div>
+			<div class="tip" style="top:74vh; left:3vh; text-align: left;">
+				<span>提交申报成功后，省医保将在5-8个工作日，给预留手机号发送鉴定结果短信，敬请等待！</span>
+			</div>
+		</div>
+		
+		<div class="control">
+			<button id="next" class="button">开始演示</button>
+		</div>
+		
+		<div id="stepInfo"  class="info" style="display: flex; justify-content: center;"></div>
+		<div id="titleInfo" class="info" style="width: auto; right: 0vh;">门诊慢性病亲朋代申报演示</div>
+		
+		<div id="loading" style="width:100%; height: 100%; z-index: 4; position: absolute; display:flex;">
+			<canvas id="canvas" ></canvas>
+		<div>
+    </div>
+	
+</body>
+<script src="js/howler.js"></script>
+<script src="js/slide.js"></script>
+<script>
+	//----------------------------------------------------
+	//---------------------------------------------------------------
+	const sound = new Howl({
+	  urls: ['audio/mbdsb.mp3'],
+	  sprite: {
+       	step1:	[0, 4696],
+		step2:	[5160, 3565],
+		step3:	[9135, 4273],
+		step4:	[13822, 6385],
+		step5:	[20566, 2882],
+		step6:	[23868, 1456],
+		step7:	[25739, 4267],
+		step8:	[30394, 4429],
+		step9:	[35185, 3961],
+		step10:	[39577, 1660],
+		step11:	[41629, 4178],
+		step12:	[46164, 30604],
+		step13:	[77160, 2664],
+		step14:	[80186, 2915],
+		step15:	[83509, 4920],
+		step16:	[88824, 5369],
+		step17:	[94607, 12110]
+		}
+	});
+	
+	let upSlides   = [0,3,4,11];
+	let reUpSlides = [0,4,5,15];
+	
+	const asset = ['asset/yibao0000.webp', 'asset/yibao0001.webp', 'asset/yibao0002.webp', 
+					'asset/yibao0004.webp', 'asset/yibao0006.webp', 'asset/yibao0009.webp'];
+	loadAssets(asset, upSlides, reUpSlides, sound);
+</script>
+</html>
