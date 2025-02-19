@@ -5,38 +5,9 @@
 	<meta name="viewport" content="user-scalable=no"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>门诊慢性病个人申报演示</title>
+	<link rel="stylesheet" href="css/sub.css">
     <style>
-			
-		body {
-			margin: 0;
-			padding: 0;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			background-color: #f0f0f0;
-		}
-
-		* {	font-size: 2vh; }
 		
-		.container {
-			position: relative;
-			width: 45vh;
-			height: 100vh;
-			overflow: hidden;
-		}
-
-		.slide, .maskLayer {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background-size: cover;
-			/*background-position: center;*/
-			transition: top 1s ease-in-out, height 1s ease-in-out;
-			diaplay: none;
-		}
-
 		.slide.up1 {
 			top: -15vh;
 			height: 115vh;
@@ -50,183 +21,6 @@
 		.slide.up3 {
 			top: -47.4vh;
 			height: 147.4vh;
-		}
-		
-		.maskLayer {
-			display: flex;
-			align-items: flex-end;
-			background-color: #000A;
-		}
-		
-		.popwindow {
-			height: 45vh;
-			width:  100vh;
-			background-size: cover;
-			background-image: url('asset/yibao0008.webp');
-			border-radius: 5vh 5vh 0 0;
-		}
-		
-		.diamond {
-			animation: clipDiamondIn .6s;
-		}
-		@keyframes clipDiamondIn {
-			0%   {
-				clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
-			}
-			100% {
-				clip-path: polygon(50% -50%, 150% 50%, 50% 150%, -50% 50%);
-			}    
-		}
-		
-		.star {
-			animation: clipRectSpIn .6s;
-		}
-		@keyframes clipRectSpIn {
-			0%   {
-				clip-path: polygon(50% 20%, 50% 50%, 20% 50%, 50% 50%, 50% 80%, 50% 50%, 80% 50%, 50% 50%);
-			}
-			100% {
-				clip-path: polygon(50% 0%, 0% 0%, 0% 50%, 0% 100%, 50% 100%, 100% 100%, 100% 50%, 100% 0%);
-			}
-		}
-		
-		.fan {
-			animation: clipSectorIn .6s linear;
-		}
-		@keyframes clipSectorIn {
-			0%   {
-				clip-path: polygon(50% 100%, 50% 0%, 0% 0%, 100% 0%, 50% 0%);
-			}
-			50% {
-				clip-path: polygon(50% 100%, 0% 0%, 0% 0%, 100% 0%, 100% 0%);
-			}
-			100% {
-				clip-path: polygon(50% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%);
-			}
-		}
-
-		.control {
-			position: absolute;
-			display: flex;
-            justify-content: center;
-            align-items: center;
-			bottom: 3vh;
-			width:100%;
-			background-color: rgba(0, 0, 0, 0.4);
-			z-index: 3;
-		}
-
-		.button {
-			background-color: #4CAF50CC;
-			border: none;
-			color: white;
-			padding: 2vh 4vh;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			border-radius: 0.6vh;
-			cursor: pointer;
-			margin: 1vh 2vh; 
-		}
-
-		.info,.tip {
-			position: absolute;
-			width: 10vh;
-			background-color: #4CAF50AA;
-			text-align: center;
-			margin: 1vh;
-			padding: 1.6vh;
-			border-radius: 0.5vh;
-			color: white;
-			text-decoration: none;
-			z-index: 3;
-		}
-		
-		.tip {
-			width: auto; 
-			/*border: 0.4vh solid #E00;*/
-			border-radius: 0vh;
-			background-color: #E00D;
-			left: 3vh;
-			z-index: 0;
-		}
-		
-		.tip.right {
-			left: auto;
-			right: 0vh;
-		}
-		
-		.bot, .rightbot, .upbot, .uprightbot{
-			position: absolute;
-			width: 0;
-			height: 0;
-			border-width: 1.8vh 0.6vh; 
-			border-style: solid; 
-			border-color: #E00 transparent transparent; 
-			bottom: -3.2vh;
-			left: 3vh;
-			
-		}
-			
-		.rightbot {
-			border-color: #E00 transparent transparent;
-			left: auto;
-			right: 3vh; 
-		}
-		
-		.upbot, .uprightbot {
-			border-color: transparent transparent #E00 transparent;
-			top: -3.2vh;
-			bottom: auto;
- 		}
-		
-		.uprightbot {
-			left: auto;
-			right: 3vh; 
-		}
-		
-		.input {
-			/*position: absolute;*/
-			width: auto;
-			
-			margin: 0.5vh;
-			border: 0.5vh;
-			color: black;
-			text-decoration: none;
-			right: 6vh;
-		}
-		
-		.rect {
-			position: absolute;
-			width:  20vh;
-			height: 20vh;
-			
-			border-radius: 0vh;
-			border-width: 0.4vh; 
-			border-style: solid;
-			border-color: red;
-			
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-		
-		.circleBox, .circlediff {
-			width:  2vh;
-			height: 2vh;
-			background: rgba(255,0,0,0.8);
-			border-radius: 4vh;
-
-		}
-
-		.circlediff  {
-			animation: circleChange 2s 1s ease-out infinite; 
-		}
-
-		@keyframes circleChange{
-			0%{transform: scale(1);opacity: 0.95;}
-			25%{transform: scale(2);opacity: 0.5;}
-			100%{transform: scale(3);opacity: 0.05;}
 		}
 		
 	</style>
@@ -383,12 +177,12 @@
 		
 		<div id="stepInfo"  class="info" style="display: flex; justify-content: center;"></div>
 		<div id="titleInfo" class="info" style="width: auto; right: 0vh;">门诊慢性病个人申报演示</div>
-		
-		<div id="loading" style="width:100%; height: 100%; z-index: 4; position: absolute; display:flex;">
+    
+		<div id="loading" style="width:100%; height: 100%; z-index: 4; position: absolute; background-color: #a0a0a0; display:flex;">
 			<canvas id="canvas" ></canvas>
-		<div>
-
-    </div>
+		</div>
+	
+	</div>
 	
 </body>
 <script src="js/howler.js"></script>
@@ -417,9 +211,8 @@
 	let upSlides   = [0,3,4,8];
 	let reUpSlides = [0,4,5,12];
 	
-	const asset = ['asset/yibao0000.webp',  'asset/yibao0001.webp',  'asset/yibao0002.webp', 
-					'asset/yibao0003.webp',  'asset/yibao0006.webp', 'asset/yibao0009.webp'];
+	const asset = ['asset/yibao.webp',  'asset/yibao2.webp',  'asset/yibao3.webp',
+			'asset/yibao4.webp',  'asset/yibao6.webp', 'asset/yibao8.webp'];
 	loadAssets(asset, upSlides, reUpSlides, sound);
-
 </script>
 </html>

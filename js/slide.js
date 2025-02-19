@@ -29,9 +29,17 @@ const initSlides = (asset, upSlides, reUpSlides, sound)=> {
 
 	let curChildren;
 	let	totalChildren;
-
+	let first = 1;
 	//------------------------------
 	const nextClick = () => {
+		
+		if(first){
+			for(let item of slides){
+				item.style.display = 'flex';
+			}
+			first = 0;
+		}
+		
 		curStep++;
 		stepInfo.textContent = curStep + ' / ' + totalSteps;
 		sound.stop();
@@ -146,17 +154,17 @@ const initSlides = (asset, upSlides, reUpSlides, sound)=> {
 	
 	for(let i=0; i<asset.length; i++){
 		slides[i].style.backgroundImage = 'url(' + asset[i] + ')';
-		slides[i].style.display = 'flex';
+		//slides[i].style.display = 'flex';
 	}
-	
+	slides[0].style.display = 'flex';
 }
 
 const initLoadingBar = ()=> {
 	const ctx = canvas.getContext('2d');
 	canvas.height = window.innerHeight;
 	canvas.width = window.innerHeight * 0.46;
-	ctx.fillStyle="#a0a0a0";
-	ctx.fillRect(0,0,canvas.width,canvas.height);
+	//ctx.fillStyle="#a0a0a0";
+	//ctx.fillRect(0,0,canvas.width,canvas.height);
 	
 	let x1 = canvas.width / 10;
 	let y1 = canvas.height / 2 - 10;

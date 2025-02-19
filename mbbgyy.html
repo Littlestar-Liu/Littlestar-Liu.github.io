@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>门诊慢性病变更定点医院演示</title>
+	<link rel="stylesheet" href="css/sub.css">
+    <style>
+		.slide.up1 {
+			top: -15vh;
+			height: 115vh;
+		}
+		
+		.slide.up2 {
+			top: -37vh;
+			height: 137vh;
+		}
+		
+	</style>
+</head>
+<body>
+    <div class="container">
+        <div class="slide">
+			<div class="tip" style="left:3vh; top:10vh;">
+				<span class="upbot" style="left:7vh;"></span>
+				<span>1. 微信或支付宝搜索栏搜索“河南医保”</span>
+			</div>
+			<div class="rect" style="left:9.6vh; top:5.6vh; width:7.8vh; height:2.6vh;"></div>
+			
+			<div class="tip" style="left:3vh; top:10.5vh;">
+				<span class="bot" style="left:20vh;"></span>
+				<span>2. 点击进入“河南医保”小程序</span>
+			</div>
+			<div class="rect" style="left:8vh; top:19vh; width:35vh; height:6vh;">
+				<div class="circleBox">
+					<div class="circlediff"></div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="slide">
+			<div class="tip" style="top:69vh;">
+				<span class="bot" style="left:18vh;"></span>
+				<span>3. 新窗口中向上滑动屏幕，点击“我要办”</span>
+			</div>
+			<div class="rect" style="left:15vh; top:78vh; width:14.5vh; height:16vh;">
+				<div class="circleBox">
+					<div class="circlediff"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="slide">
+			<div class="tip right" style="top:98vh;">
+				<span class="rightbot" style="right:6.5vh;"></span>
+				<span>4. 新窗口中向上滑动屏幕，点击“申请变更享受待遇医院”</span>
+			</div>
+			<div class="rect" style="left:30.5vh; top:108.5vh; width:12vh; height:12vh;">
+				<div class="circleBox">
+					<div class="circlediff"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="slide">
+			<div class="tip" style="left:1vh; top:43.4vh;">
+				<span class="bot" style="left:1vh;"></span>
+				<span>5. 新窗口选择变更定点医院的备案信息</span>
+			</div>
+			<div class="rect" style="left: 0.5vh; top:51.4vh; width:4vh; height:4vh; ">
+				<span>&#9989;</span>
+			</div>
+			
+			<div class="tip right" style="top:64.2vh; right:7.5vh;">
+				<span class="rightbot"></span>
+				<span>6. 点击“申请变更定点医院”</span>
+			</div>
+			<div class="rect" style="left:23.5vh; top:72.2vh; width:19vh; height:6vh;">
+				<div class="circleBox">
+					<div class="circlediff"></div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="slide">
+			<div class="tip right" style="top:67.5vh; right:1vh;">
+				<span class="rightbot"></span>
+				<span>7. 输入并选择弹窗中的"变更享受待遇医院"</span>
+			</div>
+			<div class="rect" style="left: 24vh; top:75.5vh; width:19vh; height:4vh; justify-content: flex-end;">
+				<span>xxxxxxxx</span>
+			</div>
+			
+			<div class="tip right" style="top:74.2vh; right:10vh;">
+				<span class="rightbot"></span>
+				<span>8. 输入移动电话</span>
+			</div>
+			<div class="rect" style="left: 24vh; top:82.2vh; width:19vh; height:4vh; justify-content: flex-end;">
+				<span>1xxxxxxxxxx</span>
+			</div>
+			
+			<div class="tip" style="top:79vh;">
+				<span class="bot" style="left:15vh;"></span>
+				<span>9. 点击底部"保存"按钮</span>
+			</div>
+			<div class="rect" style="left: 3vh; top:87vh; width:39vh; height:7vh;">
+				<div class="circleBox">
+					<div class="circlediff"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="control">
+			<button id="next" class="button">开始演示</button>
+		</div>
+		
+		<div id="stepInfo"  class="info" style="display: flex; justify-content: center;"></div>
+		<div id="titleInfo" class="info" style="width: auto; right: 0vh;">门诊慢性病变更定点医院演示</div>
+		
+		<div id="loading" style="width:100%; height: 100%; z-index: 4; position: absolute; background-color: #a0a0a0; display:flex;">
+			<canvas id="canvas" ></canvas>
+		</div>
+    </div>
+	
+</body>
+<script src="js/howler.js"></script>
+<script src="js/slide.js"></script>
+<script>
+	const sound = new Howl({
+	  urls: ['audio/mbbgyy.mp3'],
+	  sprite: {
+        step1: [71,4691],
+		step2: [5158,3316],
+		step3: [8869,4463],
+		step4: [13693,6193],
+		step5: [20244,3999],
+		step6: [24637,2769],
+		step7: [27817,4417],
+		step8: [32654,1812],
+		step9: [34876,2510]
+		}
+	});
+	
+	let upSlides   = [0,3,4];
+	let reUpSlides = [0,4,5];
+	
+	const asset = ['asset/yibao.webp', 'asset/yibao2.webp', 'asset/yibao3.webp',
+			'asset/bgddyy.webp', 'asset/bgddyy2.webp'];
+	loadAssets(asset, upSlides, reUpSlides, sound);
+</script>
+</html>

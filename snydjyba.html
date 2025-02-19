@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>省内异地就医备案演示</title>
+	<link rel="stylesheet" href="css/sub.css">
+</head>
+<body>
+    <div class="container">
+        <div class="slide">
+			<div class="tip" style="left:3vh; top:10vh;">
+				<span class="upbot" style="left:10vh;"></span>
+				<span>1. 微信或支付宝搜索栏搜索“河南医保”</span>
+			</div>
+			<div class="rect" style="left:9.6vh; top:5.6vh; width:7.8vh; height:2.6vh;"></div>
+			
+			<div class="tip" style="left:3vh; top:12vh;">
+				<span class="bot" style="left:22vh;"></span>
+				<span>2. 点击进入“河南医保”小程序</span>
+			</div>
+			<div class="rect" style="left:8vh; top:20vh; width:35vh; height:6vh;">
+				<div class="circleBox">
+					<div class="circlediff"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="slide">	
+			<div class="tip" style="left:12vh; top:50vh;">
+				<span class="bot" style="left:15vh;"></span>
+				<span>3. 新窗口中点击“异地就医”</span>
+			</div>
+			<div class="rect" style="left:23vh; top:58vh; width:8vh; height:8vh;">
+				<div class="circleBox">
+					<div class="circlediff"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="slide">
+			<div class="tip" style="left:2vh; top:7vh;">
+				<span class="bot" style="left:13vh;"></span>
+				<span>4. 新窗口点击红框中的所需备案类型，根据提示进行备案操作</span>
+			</div>
+			<div class="rect" style="left:3vh; top:17vh; width:26vh; height:11vh;"></div>
+			
+			<div class="tip" style="left:5vh; top:45vh;">
+				<span class="bot" style="left:10vh;"></span>
+				<span>5. 温馨提示</span>
+			</div>
+			<div class="tip" style="top:53vh; left:3vh; text-align: left; flex-direction: column;">
+				<span>异地就医备案成功后：</span>
+				<span>1）异地就医报销的起付标准、报销比例和限额标准，执行参保地的医保政策；</span>
+				<span>2）异地就医报销中出现不报销或报销金额问题，请电话咨询参保地的医保中心。</span>
+			</div>
+		</div>
+
+		
+		<div class="control">
+			<button id="next" class="button">开始演示</button>
+		</div>
+		
+		<div id="stepInfo"  class="info" style="display: flex; justify-content: center;"></div>
+		<div id="titleInfo" class="info" style="width: auto; right: 0vh;">省内异地就医备案演示</div>
+		
+		<div id="loading" style="width:100%; height: 100%; z-index: 4; position: absolute; background-color: #a0a0a0; display:flex;">
+			<canvas id="canvas" ></canvas>
+		</div>
+    </div>
+	
+</body>
+<script src="js/howler.js"></script>
+<script src="js/slide.js"></script>
+<script>
+	const sound = new Howl({
+	  urls: ['audio/snydjyba.mp3'],
+	  sprite: {
+        step1: [71, 4439],
+		step2: [4893, 2860],
+		step3: [8147, 2957],
+		step4: [11459, 6436],
+		step5: [18264, 20125]
+		}
+	});
+	
+	let upSlides   = [0 ];
+	let reUpSlides = [0 ];
+	
+	const asset = ['asset/hnyb.webp',  'asset/hnyb2.webp',  'asset/ydbaHN.webp'];
+	loadAssets(asset, upSlides, reUpSlides, sound);
+</script>
+</html>
