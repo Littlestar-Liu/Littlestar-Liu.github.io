@@ -140,16 +140,21 @@ const initSlides = (asset, upSlides, reUpSlides, sound)=> {
 		}			
 	};
 	
-	
+	let bReady = false;
 	sound.on('load', () => {
-		nextBtn.addEventListener('click', nextClick);
-		nextBtn.style.display = 'flex';
-		document.addEventListener('keydown', (e) => {
-			if( e.keyCode === 0x20){
-				nextClick();
-				e.preventDefault();
-			}
-		});
+		console.log('load');
+		if(!bReady){
+			bReady = true;
+			setStart();
+		}
+	});
+	
+	sound.on('canplay', () => {
+		console.log('canplay');
+		if(!bReady){
+			bReady = true;
+			setStart();
+		}
 	});
 	
 	for(let i=0; i<asset.length; i++){
@@ -159,6 +164,16 @@ const initSlides = (asset, upSlides, reUpSlides, sound)=> {
 	slides[0].style.display = 'flex';
 }
 
+const setStart = () => {
+	nextBtn.addEventListener('click', nextClick);
+	nextBtn.style.display = 'flex';
+	document.addEventListener('keydown', (e) => {
+		if( e.keyCode === 0x20){
+			nextClick();
+			e.preventDefault();
+		}
+	});
+}
 const initLoadingBar = ()=> {
 	const ctx = canvas.getContext('2d');
 	canvas.height = window.innerHeight;
