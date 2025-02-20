@@ -1,4 +1,4 @@
-
+﻿
 const initSlides = (asset, upSlides, reUpSlides, sound)=> {
 	const slides = document.querySelectorAll('.slide');
 	const stepInfo = document.querySelector('#stepInfo');
@@ -140,19 +140,16 @@ const initSlides = (asset, upSlides, reUpSlides, sound)=> {
 		}			
 	};
 	
-	let bReady = false;
+
 	sound.on('load', () => {
-		if(!bReady){
-			bReady = true;
-			setStart();
-		}
-	});
-	
-	sound.on('canplay', () => {
-		if(!bReady){
-			bReady = true;
-			setStart();
-		}
+		nextBtn.addEventListener('click', nextClick);
+		document.addEventListener('keydown', (e) => {
+			if( e.keyCode === 0x20){
+				nextClick();
+				e.preventDefault();
+			}
+		});
+		nextBtn.style.display = 'flex';
 	});
 
 	for(let i=0; i<asset.length; i++){
@@ -160,17 +157,6 @@ const initSlides = (asset, upSlides, reUpSlides, sound)=> {
 		//slides[i].style.display = 'flex';
 	}
 	slides[0].style.display = 'flex';
-}
-
-const setStart = () => {
-	nextBtn.addEventListener('click', nextClick);
-	document.addEventListener('keydown', (e) => {
-		if( e.keyCode === 0x20){
-			nextClick();
-			e.preventDefault();
-		}
-	});
-	nextBtn.style.display = 'flex';
 }
 
 const initLoadingBar = ()=> {
