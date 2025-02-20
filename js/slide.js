@@ -145,7 +145,6 @@ const initSlides = (asset, upSlides, reUpSlides, sound)=> {
 		nextBtn.addEventListener('click', nextClick);
 		nextBtn.style.display = 'flex';
 		document.addEventListener('keydown', (e) => {
-			
 			if( e.keyCode === 0x20){
 				nextClick();
 				e.preventDefault();
