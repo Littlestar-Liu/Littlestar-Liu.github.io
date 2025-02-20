@@ -21,7 +21,7 @@ const initSlides = (asset, upSlides, reUpSlides, sound)=> {
 	slides[0].style.zIndex = '2';
 	stepInfo.textContent = '0 / ' + totalSteps;
 	stepInfo.style.display = 'none';
-
+	nextBtn.style.display = 'none';
 	//-----------------------------------------------------------
 	let currentIndex = 0; //index of currentslide
 	let curSubIndex = 0;  //index of current subelement of current slide 
@@ -143,6 +143,7 @@ const initSlides = (asset, upSlides, reUpSlides, sound)=> {
 	
 	sound.on('load', () => {
 		nextBtn.addEventListener('click', nextClick);
+		nextBtn.style.display = 'flex';
 		document.addEventListener('keydown', (e) => {
 			
 			if( e.keyCode === 0x20){
