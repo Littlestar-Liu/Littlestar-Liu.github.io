@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
 	<meta name="viewport" content="user-scalable=no"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>门诊慢性病个人待遇查询演示</title>
+    <title>职工医保门诊统筹余额查询演示</title>
 	<link rel="stylesheet" href="css/sub.css">
     <style>
 		.slide.up1 {
@@ -16,7 +16,6 @@
 			top: -44vh;
 			height: 144vh;
 		}
-
 	</style>
 </head>
 <body>
@@ -54,10 +53,10 @@
 		
 		<div class="slide">
 			<div class="tip right" style="top:103vh;">
-				<span class="rightbot" style="right:21vh;"></span>
-				<span>4. 新窗口中向上滑动屏幕，点击“门诊慢性病个人待遇查询”</span>
+				<span class="rightbot" style="right:7vh;"></span>
+				<span>4. 新窗口中向上滑动屏幕，点击“门诊统筹余额查询”</span>
 			</div>
-			<div class="rect" style="left:16vh; top:113.5vh; width:12vh; height:12vh;">
+			<div class="rect" style="left:30vh; top:113.5vh; width:12vh; height:12vh;">
 				<div class="circleBox">
 					<div class="circlediff"></div>
 				</div>
@@ -65,13 +64,22 @@
 		</div>
 		
 		<div class="slide">
-			<div class="tip" style="top:36vh; left:5vh;">
-				<span class="bot" style="left:10vh;"></span>
-				<span>5. 温馨提示：</span>
+			<div class="tip" style="left:3vh; top:23vh;">
+				<span class="upbot" style="left:7vh;"></span>
+				<span>5. 新窗口中点击红框右上角眼睛，查看门诊统筹余额</span>
 			</div>
-			<div class="tip" style="top:44vh; left:10vh; right: 5vh; text-align: left; flex-direction: column;">
-				<span>1）新窗口中可以浏览门诊慢性病个人待遇；</span><br>
-				<span>2）可以查看“变更定点待遇医院”是否成功。</span>
+			<div class="rect" style="left:5vh; top:12vh; width:21vh; height:6vh; padding: 2vh; justify-content: flex-end; align-items: flex-start;">
+				<div class="circleBox">
+					<div class="circlediff"></div>
+				</div>
+			</div>
+			
+			<div class="tip" style="top:40vh; left:5vh;">
+				<span class="bot" style="left:10vh;"></span>
+				<span>6. 温馨提示：</span>
+			</div>
+			<div class="tip" style="top:48vh; left:10vh; right: 5vh; text-align: left; flex-direction: column;">
+				<span>本窗口中可以浏览本年度门诊统筹消费记录</span>
 			</div>
 			
 		</div>
@@ -80,34 +88,35 @@
 			<button id="next" class="button">开始演示</button>
 		</div>
 		
-		<div id="stepInfo"  class="info" style="display: flex; justify-content: center;"></div>
-		<div id="titleInfo" class="info" style="width: auto; right: 0vh;">门诊慢性病个人待遇查询演示</div>
-    
+		<div id="stepInfo"  class="info" style="display: flex; justify-content: center; width: 6vh;"></div>
+		<div id="titleInfo" class="info" style="width: auto; right: 0vh;">职工医保门诊统筹余额查询演示</div>
+		
 		<div id="loading" style="width:100%; height: 100%; z-index: 4; position: absolute; background-color: #a0a0a0; display:flex;">
 			<canvas id="canvas" ></canvas>
 		</div>
-	</div>
+    </div>
+
+	<script src="js/howler.core.min.js"></script>
+	<script src="js/slide.js"></script>
+	<script>
+		let a=['asset/yibao.webp',  'asset/yibao2.webp',  'asset/mztcyecx.webp',
+				'asset/mztcyecx2.webp'];
+				
+		let b=[0,3,4];
+		let c=[0,4,5];
+		
+		let d=['audio/zgybmztcyecx.mp3'];
+		let f={
+			f1: [71, 4439],
+			f2: [4893, 2860],
+			f3: [8148, 4074],
+			f4: [12621, 5246],
+			f5: [18156, 6013],
+			f6: [24552, 5522]
+		};
+
+		X(a,b,c,d,f);
+	</script>
 	
 </body>
-<script src="js/howler.core.min.js"></script>
-<script src="js/slide.js"></script>
-<script>
-	const sound = new Howl({
-	  src: ['audio/mbdycx.mp3'],
-	  sprite: {
-        step1: [71,4691],
-		step2: [5158,3316],
-		step3: [8868,4535],
-		step4: [13772,6296],
-		step5: [20421,11236]
-		}
-	});
-	
-	let upSlides   = [0,3,4];
-	let reUpSlides = [0,4,5];
-	
-	const asset = ['asset/yibao.webp',  'asset/yibao2.webp',  'asset/mzmbdycx.webp',
-			'asset/mzmbdycx2.webp'];
-	loadAssets(asset, upSlides, reUpSlides, sound);
-</script>
 </html>

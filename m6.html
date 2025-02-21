@@ -124,31 +124,30 @@
 			<canvas id="canvas" ></canvas>
 		</div>
     </div>
-	
+
+	<script src="js/howler.core.min.js"></script>
+	<script src="js/slide.js"></script>
+	<script>
+		let a = ['asset/yibao.webp', 'asset/yibao2.webp', 'asset/yibao3.webp',
+				'asset/bgddyy.webp', 'asset/bgddyy2.webp'];
+				
+		let b=[0,3,4];
+		let c=[0,4,5];
+		
+		let d=['audio/mbbgyy.mp3'];
+		let f={
+			f1: [71,4691],
+			f2: [5158,3316],
+			f3: [8869,4463],
+			f4: [13693,6193],
+			f5: [20244,3999],
+			f6: [24637,2769],
+			f7: [27817,4417],
+			f8: [32654,1812],
+			f9: [34876,2510]
+		};
+		
+		X(a,b,c,d,f);
+	</script>
 </body>
-<script src="js/howler.core.min.js"></script>
-<script src="js/slide.js"></script>
-<script>
-	const sound = new Howl({
-	  src: ['audio/mbbgyy.mp3'],
-	  sprite: {
-        step1: [71,4691],
-		step2: [5158,3316],
-		step3: [8869,4463],
-		step4: [13693,6193],
-		step5: [20244,3999],
-		step6: [24637,2769],
-		step7: [27817,4417],
-		step8: [32654,1812],
-		step9: [34876,2510]
-		}
-	});
-	
-	let upSlides   = [0,3,4];
-	let reUpSlides = [0,4,5];
-	
-	const asset = ['asset/yibao.webp', 'asset/yibao2.webp', 'asset/yibao3.webp',
-			'asset/bgddyy.webp', 'asset/bgddyy2.webp'];
-	loadAssets(asset, upSlides, reUpSlides, sound);
-</script>
 </html>

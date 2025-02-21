@@ -196,39 +196,45 @@
 		</div>
 		
     </div>
-	
+
+	<script src="js/howler.core.min.js"></script>
+	<script src="js/slide.js"></script>
+	<script>
+		let a = [
+			'asset/yibao.webp',
+			'asset/hnyb2.webp',
+			'asset/gjzhbd3.webp',
+			'asset/gjzhbd4.webp',
+			'asset/gjzhbd5.webp',
+			'asset/gjzhbd6.webp',
+			'asset/gjzhbd7.webp',
+			'asset/gjzhbd8.webp',
+			'asset/gjzhbd9.webp'
+		];
+		let b   = [0,0,0,0,0,0,13 ];
+		let c = [0,0,0,0,0,0,14 ];
+		let d=['audio/gjzhbd.mp3'];
+		let f={
+			f1: [70, 3864],
+			f2: [4332, 2881],
+			f3: [7621, 2759],
+			f4: [10788, 3408],
+			f5: [14557, 3314],
+			f6: [18244, 2364],
+			f7: [21001, 1332],
+			f8: [22718, 3617],
+			f9: [26743, 3004],
+			f10: [30108, 2958],
+			f11: [33455, 2757],
+			f12: [36624, 1838],
+			f13: [38822, 4390],
+			f14: [43573, 2663],
+			f15: [46597, 10477],
+			f16: [57481, 2833],
+			f17: [60734, 13156]
+		};
+		
+		X(a, b, c, d, f);
+	</script>
 </body>
-<script src="js/howler.core.min.js"></script>
-<script src="js/slide.js"></script>
-<script>
-	const sound = new Howl({
-	  src: ['audio/gjzhbd.mp3'],
-	  sprite: {
-        step1: [70, 3864],
-		step2: [4332, 2881],
-		step3: [7621, 2759],
-		step4: [10788, 3408],
-		step5: [14557, 3314],
-		step6: [18244, 2364],
-		step7: [21001, 1332],
-		step8: [22718, 3617],
-		step9: [26743, 3004],
-		step10: [30108, 2958],
-		step11: [33455, 2757],
-		step12: [36624, 1838],
-		step13: [38822, 4390],
-		step14: [43573, 2663],
-		step15: [46597, 10477],
-		step16: [57481, 2833],
-		step17: [60734, 13156]
-		}
-	});
-	let upSlides   = [0,0,0,0,0,0,13 ];
-	let reUpSlides = [0,0,0,0,0,0,14 ];
-	
-	const asset = ['asset/yibao.webp',  'asset/hnyb2.webp',  'asset/gjzhbd3.webp',
-			'asset/gjzhbd4.webp',  'asset/gjzhbd5.webp',	'asset/gjzhbd6.webp',
-			'asset/gjzhbd7.webp',  'asset/gjzhbd8.webp',  'asset/gjzhbd9.webp'];
-	loadAssets(asset, upSlides, reUpSlides, sound);
-</script>
 </html>

@@ -130,7 +130,7 @@
 			
 			<div class="maskLayer">
 				<div class="popwindow"> </div>
-				<div class="rect" style="left: 1.5vh; top:111.5vh; width:12vh; height:12vh;">
+				<div class="rect" style="left: 1.5vh; top:111.5vh; width:12vh; height:12vh;  display:flex;">
 					<div class="circleBox">
 						<div class="circlediff"></div>
 					</div>
@@ -183,36 +183,35 @@
 		</div>
 	
 	</div>
-	
+
+	<script src="js/howler.core.min.js"></script>
+	<script src="js/slide.js"></script>
+	<script>
+		let a = ['asset/yibao.webp',  'asset/yibao2.webp',  'asset/yibao3.webp',
+				'asset/yibao4.webp',  'asset/yibao6.webp', 'asset/yibao8.webp'];
+		
+		let b = [0,3,4,8];
+		let c = [0,4,5,12];
+		
+		let d=['audio/mbgrsb.mp3'];
+		let f={
+			f1: [0, 4837],
+			f2:[5305, 3347],
+			f3:[9013, 4498],
+			f4:[13873, 5974],
+			f5:[20244, 5186],
+			f6:[25788, 4212],
+			f7:[30360, 1804],
+			f8:[32519, 3928],
+			f9:[36841, 29448],
+			f10:[66649, 2303],
+			f11:[69313, 3419],
+			f12:[73128, 4864],
+			f13:[78345, 5661],
+			f14:[84390, 12498]
+		};
+
+		X(a, b, c, d, f);
+	</script>
 </body>
-<script src="js/howler.core.min.js"></script>
-<script src="js/slide.js"></script>
-<script>
-	const sound = new Howl({
-	  src: ['audio/mbgrsb.mp3'],
-	  sprite: {
-        step1:	[0, 4837],
-		step2:	[5305, 3347],
-		step3:	[9013, 4498],
-		step4:	[13873, 5974],
-		step5:	[20244, 5186],
-		step6:	[25788, 4212],
-		step7:	[30360, 1804],
-		step8:	[32519, 3928],
-		step9:	[36841, 29448],
-		step10:	[66649, 2303],
-		step11:	[69313, 3419],
-		step12:	[73128, 4864],
-		step13:	[78345, 5661],
-		step14:	[84390, 12498]
-		}
-	});
-	
-	let upSlides   = [0,3,4,8];
-	let reUpSlides = [0,4,5,12];
-	
-	const asset = ['asset/yibao.webp',  'asset/yibao2.webp',  'asset/yibao3.webp',
-			'asset/yibao4.webp',  'asset/yibao6.webp', 'asset/yibao8.webp'];
-	loadAssets(asset, upSlides, reUpSlides, sound);
-</script>
 </html>

@@ -69,26 +69,25 @@
 			<canvas id="canvas" ></canvas>
 		</div>
     </div>
+
+	<script src="js/howler.core.min.js"></script>
+	<script src="js/slide.js"></script>
+	<script>
+		let d=['audio/snydjyba.mp3'];
+		let f={
+			f1: [71, 4439],
+			f2: [4893, 2860],
+			f3: [8147, 2957],
+			f4: [11459, 6436],
+			f5: [18264, 20125]
+		};
+		
+		const a=['asset/hnyb.webp',  'asset/hnyb2.webp',  'asset/ydbaHN.webp'];
+		let b=[0 ];
+		let c=[0 ];
+	
+		X(a,b,c,d,f);
+	</script>
 	
 </body>
-<script src="js/howler.core.min.js"></script>
-<script src="js/slide.js"></script>
-<script>
-	const sound = new Howl({
-	  src: ['audio/snydjyba.mp3'],
-	  sprite: {
-        step1: [71, 4439],
-		step2: [4893, 2860],
-		step3: [8147, 2957],
-		step4: [11459, 6436],
-		step5: [18264, 20125]
-		}
-	});
-	
-	let upSlides   = [0 ];
-	let reUpSlides = [0 ];
-	
-	const asset = ['asset/hnyb.webp',  'asset/hnyb2.webp',  'asset/ydbaHN.webp'];
-	loadAssets(asset, upSlides, reUpSlides, sound);
-</script>
 </html>

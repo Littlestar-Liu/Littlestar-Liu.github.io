@@ -72,8 +72,8 @@
 		
 		<div class="slide">
 			<div class="tip right" style="top:25vh;">
-				<span class="rightbot"></span>
-				<span>5. 新窗口中输入证件号码</span>
+				<span class="rightbot" style="right:10vh;"></span>
+				<span>5. 新窗口中输入病人的身份证号码</span>
 			</div>
 			<div class="rect" style="left: 24vh; top:33vh; width:19vh; height:4vh;">
 				<span>41xxxxxxxxxxxxxxxx</span>
@@ -101,7 +101,7 @@
 			</div>
 	
 			<div class="tip right" style="top:62vh;">
-				<span class="rightbot"></span>
+				<span class="rightbot" style="right:10vh;"></span>
 				<span>8. 输入并选择弹窗中的申报病种名称</span>
 			</div>
 			<div class="rect" style="left: 24vh; top:70vh; width:19vh; height:4vh; justify-content: flex-end;">
@@ -159,7 +159,7 @@
 			
 			<div class="maskLayer">
 				<div class="popwindow"> </div>
-				<div class="rect" style="left: 1.5vh; top:120vh; width:12vh; height:12vh;">
+				<div class="rect" style="left: 1.5vh; top:120vh; width:12vh; height:12vh; display:flex;">
 					<div class="circleBox">
 						<div class="circlediff"></div>
 					</div>
@@ -212,38 +212,37 @@
 		</div>
     </div>
 	
+	<script src="js/howler.core.min.js"></script>
+	<script src="js/slide.js"></script>
+	<script>
+		let a = ['asset/yibao.webp',  'asset/yibao2.webp',  'asset/yibao3.webp',
+				'asset/yibao5.webp',  'asset/yibao6.webp',	'asset/yibao8.webp'];
+				
+		let b = [0,3,4,11];
+		let c = [0,4,5,15];
+		let d = ['audio/mbdsb.mp3'];
+		
+		let f ={
+			f1: [71, 4439],
+			f2: [4893, 2860],
+			f3: [8147, 4071],
+			f4: [12627, 5889],
+			f5: [18900, 3221],
+			f6: [22497, 1244],
+			f7: [24142, 3878],
+			f8: [28405, 3935],
+			f9: [32749, 3588],
+			f10: [36697, 1439],
+			f11: [38533, 3743],
+			f12: [42637, 27432],
+			f13: [70476, 2400],
+			f14: [73241, 2696],
+			f15: [76297, 4646],
+			f16: [81300, 5149],
+			f17: [86832, 11250]
+		};
+
+		X(a, b, c, d, f);
+	</script>
 </body>
-<script src="js/howler.core.min.js"></script>
-<script src="js/slide.js"></script>
-<script>
-	const sound = new Howl({
-	  src: ['audio/mbdsb.mp3'],
-	  sprite: {
-       	step1:	[0, 4696],
-		step2:	[5160, 3565],
-		step3:	[9135, 4273],
-		step4:	[13822, 6385],
-		step5:	[20566, 2882],
-		step6:	[23868, 1456],
-		step7:	[25739, 4267],
-		step8:	[30394, 4429],
-		step9:	[35185, 3961],
-		step10:	[39577, 1660],
-		step11:	[41629, 4178],
-		step12:	[46164, 30604],
-		step13:	[77160, 2664],
-		step14:	[80186, 2915],
-		step15:	[83509, 4920],
-		step16:	[88824, 5369],
-		step17:	[94607, 12110]
-		}
-	});
-	
-	let upSlides   = [0,3,4,11];
-	let reUpSlides = [0,4,5,15];
-	
-	const asset = ['asset/yibao.webp',  'asset/yibao2.webp',  'asset/yibao3.webp',
-			'asset/yibao5.webp',  'asset/yibao6.webp',	'asset/yibao8.webp'];
-	loadAssets(asset, upSlides, reUpSlides, sound);
-</script>
 </html>
